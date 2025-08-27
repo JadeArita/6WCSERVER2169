@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Update User</title>
+  </head>
+  <body>
+    <h2>Update User</h2>
+    <form method="POST" action="/api/users/update">
+      <label>User ID:</label>
+      <input type="number" name="id" required /><br /><br />
+
+      <label>Name:</label>
+      <input type="text" name="name" /><br /><br />
+
+      <label>Email:</label>
+      <input type="email" name="email" /><br /><br />
+
+      <label>Age:</label>
+      <input type="number" name="age" /><br /><br />
+
+      <label>Salary:</label>
+      <input type="number" name="salary" /><br /><br />
+
+      <button type="submit">Update User</button>
+    </form>
+  </body>
+</html>
