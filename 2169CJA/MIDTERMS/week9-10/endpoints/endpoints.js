@@ -51,8 +51,10 @@ let users = [
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+const pagesPath = path.join(__dirname, 'pages');
+
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/pages/' + 'create.html');
+  res.sendFile(path.join(pagesPath, 'create.html'));
 });
 
 app.get('/api/users', (req, res) => {
@@ -60,11 +62,11 @@ app.get('/api/users', (req, res) => {
 });
 
 app.get('/api/users/add', (req, res) => {
-  res.sendFile(__dirname + '/pages/' + 'add.html');
+  res.sendFile(path.join(pagesPath, 'add.html'));
 });
 
 app.get('/api/users/update', (req, res) => {
-  res.sendFile(__dirname + '/pages/' + 'update.html');
+  res.sendFile(path.join(pagesPath, 'update.html'));
 });
 
 app.get('/api/users/delete', (req, res) => {
@@ -103,7 +105,7 @@ app.post('/api/users/update', (req, res) => {
   res.send(user);
 });
 
-app.get('/api/delete', (req, res) => {
+app.get('/api/users/delete', (req, res) => {
   const id = parseInt(req.query.id, 10);
 
   if (!id) return res.status(400).send('User ID is required.');
