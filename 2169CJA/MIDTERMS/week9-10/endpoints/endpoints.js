@@ -51,6 +51,7 @@ let users = [
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
 const pagesPath = path.join(__dirname, 'pages');
 
 app.get('/', (req, res) => {
@@ -69,9 +70,11 @@ app.get('/api/users/update', (req, res) => {
   res.sendFile(path.join(pagesPath, 'update.html'));
 });
 
+
 app.get('/api/users/delete', (req, res) => {
   res.sendFile(path.join(pagesPath, 'delete.html'));
 });
+
 
 app.get('/api/users/:id', (req, res) => {
   const user = users.find((u) => u.id === parseInt(req.params.id));
@@ -105,7 +108,21 @@ app.post('/api/users/update', (req, res) => {
   res.send(user);
 });
 
+
 app.get('/api/users/delete', (req, res) => {
+  const id = parseInt(req.query.id, 10);
+
+  if (!id) return res.status(400).send('User ID is required.');
+
+  const index = users.findIndex((u) => u.id === id);
+  if (index === -1) return res.status(404).send('User not found.');
+
+  const [deletedUser] = users.splice(index, 1);
+  res.json(deletedUser);
+});
+
+
+app.get('/api/delete', (req, res) => {
   const id = parseInt(req.query.id, 10);
 
   if (!id) return res.status(400).send('User ID is required.');
