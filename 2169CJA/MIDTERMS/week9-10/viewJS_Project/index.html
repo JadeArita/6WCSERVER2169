@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>Vue JS Demo Application</title>
+    
+</head>
+<body>
+    <div id="app">
+        <p>{{ title }} - {{ author }} - {{ age }}</p>
+
+        <button v-on:click="age++">Get Older</button>
+        <button v-on:click="age--">Get Younger</button>
+        <button @click="title = 'The title has changed!'">Change Title</button>
+    </div>
+    <hr>
+    <div id="two-way-binding">
+        <h3>Two-Way Data Binding</h3>
+        <p>{{ message }}</p>
+        <input v-model="message" />
+    </div>
+
+    <hr>
+    <div id="conditional-rendering">
+        <h3>Conditional Rendering</h3>
+        <span v-if="seen">Now you see me</span>
+    </div>
+
+    <div id="books">
+        <div v-if="showBooks">
+            <p>{{ btitle }} - {{ bauthor }} - {{ year }}</p>
+        </div>
+
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+    </div>
+
+    <hr>
+    <div id="list-rendering">
+        <h3>List rendering</h3>
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+    
+    <script src="app.js"></script>
+    <script src="two-way.js"></script>
+    <script src="conditionalif.js"></script>
+    <script src="books.js"></script>
+    <script src="listfor.js"></script>
+</body>
+</html>
